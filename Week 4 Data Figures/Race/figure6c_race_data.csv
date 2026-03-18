@@ -1,0 +1,18 @@
+study_id,study_short,year,race_reporting_status,race_text_note
+1,Vuckovic_CNP_paraplegia,2015,not_reported,No participant race/ethnicity reported
+2,Bruurmijn_amputees,2017,not_reported,No participant race/ethnicity reported
+3,Zhang_Koike_clustered_ERSP,2022,not_reported,No participant race/ethnicity reported
+4,Li_CGCN_SCI,2023,not_reported,No participant race/ethnicity reported
+5,Wriessnegger_affective_MI,2018,not_reported,No participant race/ethnicity reported
+6,Scandola_MI_SCI,2016,not_reported,No participant race/ethnicity reported
+7,Shokur_BMI_locomotion,2018,not_reported,No participant race/ethnicity reported
+8,Khanam_AI_MI_dataset,2022,not_reported,No participant race/ethnicity reported
+9,Vuckovic_proof_of_concept_tetraplegia,2015,not_reported,No participant race/ethnicity reported
+10,Osuagwu_randomized_pilot_tetraplegia,2016,not_reported,No participant race/ethnicity reported
+11,Jang_stroke_shoulder_subluxation,2016,not_reported,No participant race/ethnicity reported
+12,Colamarino_DiSCIoser_protocol,2023,not_applicable_protocol,Protocol paper — no enrolled participant race data yet
+13,Tayeb_pain_decoding_case,2020,not_reported,No participant race/ethnicity reported
+14,Leite_EEG_tDCS_closed_loop,2017,not_reported,No participant race/ethnicity reported
+15,Salisbury_non_motor_BCI_case,2015,not_reported,No participant race/ethnicity reported
+16,Donati_BMI_gait_protocol,2016,not_reported,No participant race/ethnicity reported
+17,Deo_haptic_feedback_iBCI,2021,not_reported,No participant race/ethnicity reported
