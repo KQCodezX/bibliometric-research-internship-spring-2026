@@ -63,7 +63,7 @@ fig6b <- ggplot(age_data, aes(x = year_label, y = display_count, fill = age_grou
   ) +
 
   labs(
-    title    = "Age Representation of Participants in BCI-Spinal Cord Injury Studies",
+    title    = " Stacked Bar Chart of Age representation of participants in BCI studies by time periods",
     subtitle = "Figure 6b — Filtered articles by publication year (6 of 17 studies excluded: age not reported)",
     x        = "Publication Year",
     y        = "Number of Participants",
