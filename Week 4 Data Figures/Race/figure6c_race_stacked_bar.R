@@ -81,7 +81,7 @@ fig6c <- ggplot(counts, aes(x = year_label, y = count, fill = status)) +
 
 
   labs(
-    title    = " Stacked Bar Chart of Race representation of participants in BCI studies by time periods",
+    title    = "Stacked Bar Chart of Race representation of participants in BCI studies by time periods",
     subtitle = "Figure 6c \u2014 Filtered articles (n=17) by publication year",
     x        = "Publication Year",
     y        = "Number of Studies",
