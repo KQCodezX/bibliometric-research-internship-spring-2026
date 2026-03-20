@@ -11,6 +11,7 @@ df <- read.csv("Figure6DataExtraction.csv", stringsAsFactors = FALSE)
 
 df <- df %>%
   mutate(Period = case_when(
+    Year >= 2012 & Year <= 2014 ~ "2012-2014",
     Year >= 2015 & Year <= 2017 ~ "2015-2017",
     Year >= 2018 & Year <= 2020 ~ "2018-2020",
     Year >= 2021 & Year <= 2023 ~ "2021-2023",
@@ -54,20 +55,20 @@ long <- agg %>%
 
 STACK_ORDER <- c("Male", "Female", "Unspecified")
 
-period_levels <- c("2015-2017", "2018-2020", "2021-2023")
+period_levels <- c("2012-2014", "2015-2017", "2018-2020", "2021-2023")
 
 plot_data <- long %>%
   mutate(
     Sex    = factor(Sex,    levels = STACK_ORDER),
     Period = factor(Period, levels = period_levels)
   ) %>%
-  arrange(Period, Sex) %>%         
+  arrange(Period, Sex) %>%
   group_by(Period) %>%
   mutate(
-    ymax    = cumsum(Percentage),        
-    ymin    = ymax - Percentage,          
-    label_y = (ymin + ymax) / 2,           
-    x_pos   = as.numeric(Period)         
+    ymax    = cumsum(Percentage),
+    ymin    = ymax - Percentage,
+    label_y = (ymin + ymax) / 2,
+    x_pos   = as.numeric(Period)
   ) %>%
   ungroup()
 
@@ -79,12 +80,7 @@ sex_colours <- c(
   "Unspecified" = "#B0BEC5"    # blue-grey
 )
 
-BAR_HALF_W <- 0.30   
-
-INSIDE_THRESH <- 5
-
-inside_labels  <- filter(plot_data, Percentage >= INSIDE_THRESH)
-outside_labels <- filter(plot_data, Percentage >  0 & Percentage < INSIDE_THRESH)
+BAR_HALF_W <- 0.30
 
 n_labels <- agg %>%
   mutate(
@@ -95,7 +91,7 @@ n_labels <- agg %>%
 # Plotting
 
 p <- ggplot() +
-  
+
   geom_rect(
     data = plot_data,
     aes(
@@ -108,45 +104,21 @@ p <- ggplot() +
     colour    = "white",
     linewidth = 0.9
   ) +
-  
+
   geom_text(
-    data = inside_labels,
+    data = filter(plot_data, Percentage > 0),
     aes(
       x     = x_pos,
       y     = label_y,
-      label = paste0(Percentage, "%")
+      label = paste0(Percentage, "%"),
+      size  = 6
     ),
     fontface = "bold",
-    size     = 7,          
     colour   = "white",
     family   = "Helvetica"
   ) +
-  
-  geom_segment(
-    data = outside_labels,
-    aes(
-      x    = x_pos + BAR_HALF_W,
-      xend = x_pos + BAR_HALF_W + 0.10,
-      y    = label_y,
-      yend = label_y
-    ),
-    colour    = "grey40",
-    linewidth = 0.5
-  ) +
-  geom_text(
-    data = outside_labels,
-    aes(
-      x     = x_pos + BAR_HALF_W + 0.13,
-      y     = label_y,
-      label = paste0(Percentage, "%")
-    ),
-    fontface = "bold",
-    size     = 6,
-    colour   = "grey20",
-    hjust    = 0,
-    family   = "Helvetica"
-  ) +
-  
+  scale_size_identity() +
+
   geom_text(
     data = n_labels,
     aes(x = x_pos, y = label_y, label = paste0("n = ", Total)),
@@ -155,26 +127,26 @@ p <- ggplot() +
     colour   = "#222222",
     family   = "Helvetica"
   ) +
-  
+
   scale_fill_manual(
     values = sex_colours,
     name   = "Sex / Gender",
     guide  = guide_legend(reverse = FALSE)
   ) +
-  
+
   scale_x_continuous(
-    breaks = 1:3,
+    breaks = 1:4,
     labels = period_levels,
-    expand = expansion(add = c(0.55, 0.85))  
+    expand = expansion(add = c(0.55, 0.85))
   ) +
-  
+
   scale_y_continuous(
     limits = c(0, 108),
     breaks = seq(0, 100, by = 10),
     labels = function(x) paste0(x, "%"),
     expand = expansion(mult = c(0, 0))
   ) +
-  
+
   labs(
     title    = "Stacked Bar Chart of the Proportion of Sex/Gender Representation of Participants in BCI Studies by Time Periods",
     subtitle = "Proportion of male, female, and unspecified participants by 3-year time period",
@@ -185,7 +157,7 @@ p <- ggplot() +
       " studies)  |  Figure 6  |  BCI Bibliometric Analysis"
     )
   ) +
-  
+
   theme_minimal(base_family = "Helvetica", base_size = 16) +
   theme(
     plot.title         = element_text(face = "bold", size = 20,
@@ -219,8 +191,8 @@ output_file <- "Figure6_Sex_StackedBarChart.png"
 ggsave(
   filename = output_file,
   plot     = p,
-  width    = 16,   
-  height   = 11,    
+  width    = 16,
+  height   = 11,
   dpi      = 300,
   bg       = "white"
 )
