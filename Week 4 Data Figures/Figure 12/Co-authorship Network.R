@@ -1,5 +1,7 @@
+install.packages("igraph")
 library(igraph)
 
+# Find Dataextraction.csv then put the r script and csv file in same folder for the code to work properly
 authors <- read.csv("Dataextraction.csv")
 
 data <- authors
