@@ -61,7 +61,7 @@ fig6b <- ggplot(age_data_pos,
   ) +
   
   labs(
-    title    = "Stacked Bar Chart of Age representation of participants in BCI studies by time periods",
+    title    = "Stacked Bar Chart of Age Representation of Participants in BCI Studies by Year",
     subtitle = "Figure 6b \u2014 Filtered articles by publication year (8 of 20 studies excluded: age not reported and not applicable)",
     x        = "Publication Year",
     y        = "Number of Participants",
