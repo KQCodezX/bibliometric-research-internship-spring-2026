@@ -92,7 +92,7 @@ fig6 <- ggplot(agg, aes(x = year_label, y = display_count, fill = Sex)) +
   ) +
   
   scale_fill_manual(
-    values = c("Male"="#1565C0","Female"="#64B5F6","Unspecified"="#90A4AE"),
+    values = c("Male"="#1565C0","Female"="#64B5F6","Unspecified"="#BBDEFB"),
     name   = "Sex / Gender"
   ) +
   
@@ -100,10 +100,10 @@ fig6 <- ggplot(agg, aes(x = year_label, y = display_count, fill = Sex)) +
   
   labs(
     title    = "Stacked Bar Chart of Sex/Gender representation of participants in BCI studies by time periods",
-    subtitle = "Filtered articles (n=17) by publication year",
+    subtitle = "Filtered articles (n=18) by publication year",
     x        = "Publication Year",
     y        = "Number of Participants",
-    caption  = "Note: 'Unspecified' = sex/gender not reported in the article.\nn = number of studies published that year."
+    caption  = "Note: 'Unspecified' = sex/gender not reported in the article.\nn = number of studies published that year.\nOut of 20 filtered articles, 2 were excluded for being review and protocol papers, leaving 18 articles included (n = 18)."
   ) +
   
   theme_minimal(base_family = "Helvetica") +

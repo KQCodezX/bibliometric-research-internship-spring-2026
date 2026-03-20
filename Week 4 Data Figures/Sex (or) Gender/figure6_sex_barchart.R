@@ -77,7 +77,7 @@ print(plot_data %>% select(Period, Sex, Percentage, ymin, ymax, label_y))
 sex_colours <- c(
   "Male"        = "#1565C0",   # deep blue
   "Female"      = "#64B5F6",   # light blue
-  "Unspecified" = "#B0BEC5"    # blue-grey
+  "Unspecified" = "#BBDEFB"    # lighest blue
 )
 
 BAR_HALF_W <- 0.30
@@ -154,7 +154,8 @@ p <- ggplot() +
     y        = "Proportion of Participants (%)",
     caption  = paste0(
       "Data source: Filtered literature (n = ", nrow(df),
-      " studies)  |  Figure 6  |  BCI Bibliometric Analysis"
+      " studies) out of 20
+        Out of 20 filtered articles, 2 were excluded for being review and protocol papers."
     )
   ) +
 
