@@ -194,7 +194,7 @@ ggsave(
   plot     = p,
   width    = 16,
   height   = 11,
-  dpi      = 300,
+  dpi      = 1000,
   bg       = "white"
 )
 

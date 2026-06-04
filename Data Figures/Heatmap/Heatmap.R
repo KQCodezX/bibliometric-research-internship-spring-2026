@@ -1,9 +1,6 @@
-# install.packages(c("ggplot2", "dplyr", "tidyr"))
-
-
 library(ggplot2)
-library(dplyr)
 library(tidyr)
+library(dplyr)
 
 # Load data
 df <- read.csv("Heatmap_Updated.csv")

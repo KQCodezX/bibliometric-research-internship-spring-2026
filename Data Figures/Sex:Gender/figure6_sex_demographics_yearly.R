@@ -107,4 +107,4 @@ fig6 <- ggplot(agg_pos, aes(x = year_label, y = Count, fill = Sex)) +
 print(fig6)
 
 ggsave("figure6_sex_demographics.png",
-       plot = fig6, width = 14, height = 13, dpi = 300, bg = "white")
+       plot = fig6, width = 14, height = 13, dpi = 1000, bg = "white")

@@ -114,4 +114,4 @@ print(fig6c)
 # Save
 
 ggsave("figure6c_race_reporting.png",
-       plot = fig6c, width = 11, height = 5.5, dpi = 300, bg = "white")
+       plot = fig6c, width = 11, height = 5.5, dpi = 1000, bg = "white")

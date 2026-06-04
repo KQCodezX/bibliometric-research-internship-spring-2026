@@ -95,4 +95,4 @@ fig6b <- ggplot(age_data_pos,
 print(fig6b)
 
 ggsave("figure6b_age_stacked_bar.png",
-       plot = fig6b, width = 14, height = 14, dpi = 300, bg = "white")
+       plot = fig6b, width = 14, height = 14, dpi = 1000, bg = "white")
