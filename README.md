@@ -1,8 +1,7 @@
 # Demographic Representation in Brain-Computer Interface Studies for Motor Recovery and Pain-Related Outcomes
 ### 🧠 ThinkNeuro Bibliometric Research Internship (Spring 2026)
 
-🎨 **Project Status:** Complete / Publication Pipeline  
-💻 **Technologies:** `R`, `ggplot2`, `tidyverse`, `bibliometrix`
+🎨 **Project Status:** In progress for more publications/Presented at The National Premier Undergraduate Research Conference at Columbia University.  
 
 ---
 
@@ -19,15 +18,4 @@ This repository contains the data, analysis scripts, and data visualizations for
 ## 📂 Repository Structure
 
 ```text
-├── data/
-│   ├── raw_bibliometric_data.csv   # Scopus/Web of Science export data
-│   └── processed_demographics.csv  # Cleaned demographic metrics for analysis
-├── scripts/
-│   ├── 01_data_cleaning.R          # Data parsing and filtering script
-│   ├── 02_network_analysis.R       # Keyword co-occurrence and thematic mapping
-│   └── 03_visualization_plots.R    # Code generating the publication figures
-├── figures/
-│   ├── keyword_cooccurrence.png    # Network visualization of BCI research trends
-│   ├── demographic_heatmap.png     # Heatmap mapping representation vs. global burden
-│   └── population_distribution.png # Stacked bar charts of study cohorts
-└── README.md
+
