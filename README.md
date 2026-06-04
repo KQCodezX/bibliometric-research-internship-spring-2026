@@ -1,7 +1,7 @@
 # Demographic Representation in Brain-Computer Interface Studies for Motor Recovery and Pain-Related Outcomes
 ### 🧠 ThinkNeuro Bibliometric Research Internship (Spring 2026)
 
-🎨 **Project Status:** In progress for more publications/Presented at The National Premier Undergraduate Research Conference at Columbia University.  
+🎨 **Project Status:** In progress for subsequent publications / Presented at **The National Premier Undergraduate Research Conference at Columbia University**.
 
 ---
 
@@ -14,7 +14,7 @@ This research maps out historical trends in clinical sample populations (spannin
 
 ## 📂 Repository Structure
 
-The project is structured modularly by metric. Each subdirectory within `Data Figures/` contains the raw/processed extraction data (`.csv`), the respective production script (`.R`), and the final high-resolution visual output (`.png`).
+The project is structured modularly by metric. Each subdirectory within `Data Figures/` contains its respective raw/processed extraction data (`.csv`), production scripts (`.R`), and final high-resolution visual outputs (`.png`).
 
 ```text
 .
