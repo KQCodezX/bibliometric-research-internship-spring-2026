@@ -164,8 +164,6 @@ print(head(kw_freq, 20))
 MIN_ARTICLES <- 2   # adjust here if needed
 keep_kws <- kw_freq %>% filter(n_articles >= MIN_ARTICLES) %>% pull(keyword)
 
-cat(sprintf("Keywords retained (≥%d articles): %d\n\n", MIN_ARTICLES, length(keep_kws)))
-
 processed_filtered <- processed %>%
   filter(keyword %in% keep_kws)
 
