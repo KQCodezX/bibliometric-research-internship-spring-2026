@@ -27,10 +27,13 @@ Requires Python 3.10 or later.
 
 ```sh
 python -m pip install .
-python -m analysis "New Publications/Annual/WoS.csv" "New Publications/Annual/Scopus.csv"
+python -m analysis annual
+python -m analysis regression
+python -m analysis network
+python -m analysis validate
 python -m unittest discover -s tests -v
 python -m benchmarks.benchmark_network
 python -m benchmarks.benchmark_statistics
 ```
 
-The Python extension complements the original R analyses. Its numerical methods have been tested on synthetic inputs; validation against the original datasets and R results remains pending. Regression and graph methods are available as library functions, not yet integrated into the CLI.
+The Python extension complements the original R analyses. Its numerical methods have been tested on synthetic inputs; validation against the original datasets and R results remains pending. Regression and graph methods are exposed through CLI subcommands. Run `python -m validation.check_reference` with R installed to compare legacy annual counts against an independent R reference. Network analysis currently follows the legacy combined-record methodology without publication deduplication. Full R parity is not yet established.
