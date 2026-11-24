@@ -12,38 +12,25 @@ This research maps out historical trends in clinical sample populations (spannin
 
 ---
 
-## 📂 Repository Structure
+## Repository structure
 
-The project is structured modularly by metric. Each subdirectory within `Data Figures/` contains its respective raw/processed extraction data (`.csv`), production scripts (`.R`), and final high-resolution visual outputs (`.png`).
+- `Spring 2026 Research Intensive Data Figures/`: original demographic analyses and figures.
+- `New Publications/`: annual publication trends, co-authorship and keyword analyses.
+- `analysis/`: Python preprocessing, statistical inference, Poisson regression and weighted graph algorithms.
+- `benchmarks/`: reproducible synthetic performance experiments.
+- `tests/`: automated numerical and ingestion tests.
+- [Computational methodology](docs/methodology.md): assumptions and limitations.
 
-```text
-.
-├── Data Figures/
-│   ├── Age/
-│   │   ├── figure6b_age_bins.csv             # Age distribution binning data
-│   │   ├── figure6b_age_stacked_bar.png      # Stacked bar plot of age demographics
-│   │   └── figure6b_age_stacked_bar.R        # R script for age visualizations
-│   ├── Co-authorship/
-│   │   ├── Dataextraction.csv                # Collaboration and institutional data
-│   │   ├── Co-authorship Network.R           # Network analysis processing script
-│   │   └── Co-authorship_Network_clusters.png# Final collaboration network graph
-│   ├── Heatmap/
-│   │   ├── Heatmap_Updated.csv               # Cleaned matrix for clinical mapping
-│   │   ├── Heatmap.R                         # Heatmap matrix processing script
-│   │   └── BCI_Heatmap_Final_V2.png          # Production heatmap graphic
-│   ├── Keyword Co-occurrence/
-│   │   ├── 100articles.csv                   # Filtered core article dataset
-│   │   ├── Clean_Keyword_Matrix.csv          # Keyword parsing matrix
-│   │   ├── CSV.R / Keyword Co-occurrence.R   # Tokenization and network scripts
-│   │   └── Keyword_Network_Improved.png      # Conceptual theme map graphic
-│   ├── Race/
-│   │   ├── figure6c_race_data.csv            # Diversity extraction metrics
-│   │   ├── figure6c_race_reporting.png       # Reporting compliance trend graphic
-│   │   └── figure6c_race_stacked_bar.R       # R script for race demographics
-│   └── Sex:Gender/
-│       ├── Figure6DataExtraction.csv         # Gender-focused sample extractions
-│       ├── figure6_sex_barchart.R            # Cross-sectional plot script
-│       ├── figure6_sex_demographics_yearly.R # Longitudinal trend script
-│       ├── figure6_sex_demographics.png      # Consolidated sex distribution plot
-│       └── Figure6_Sex_StackedBarChart.png   # Longitudinal stacked bar chart
-└── README.md
+## Running the Python analysis
+
+Requires Python 3.10 or later.
+
+```sh
+python -m pip install .
+python -m analysis "New Publications/Annual/WoS.csv" "New Publications/Annual/Scopus.csv"
+python -m unittest discover -s tests -v
+python -m benchmarks.benchmark_network
+python -m benchmarks.benchmark_statistics
+```
+
+The Python extension complements the original R analyses. Its numerical methods have been tested on synthetic inputs; validation against the original datasets and R results remains pending. Regression and graph methods are available as library functions, not yet integrated into the CLI.
