@@ -1,11 +1,11 @@
 import argparse
-import csv
 import json
 from pathlib import Path
 from .preprocessing import load_papers, annual_counts
 from .statistics import bootstrap_mean
 from .regression import fit_poisson
-from .network import build_graph, pagerank_sparse
+from .network import pagerank_sparse
+from .coauthorship import load_network
 
 
 def main():
@@ -16,6 +16,7 @@ def main():
     parser.add_argument('--end-year', type=int, default=2025)
     parser.add_argument('--seed', type=int, default=42)
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--deduplicate', action='store_true', help='Deduplicate network records by known DOI')
     args = parser.parse_args()
     if args.command == 'benchmark':
         from benchmarks.benchmark_network import main as benchmark
@@ -26,16 +27,8 @@ def main():
     scopus = args.scopus or folder / 'Scopus.csv'
     try:
         if args.command == 'network':
-            groups = []
-            for path in (wos, scopus):
-                with path.open(encoding='utf-8-sig', newline='') as file:
-                    for row in csv.DictReader(file):
-                        names = [' '.join(n.replace('.', '').replace(',', ' ').split()) for n in row['Authors'].split(';')]
-                        names = sorted(set(n for n in names if n))
-                        if len(names) > 1:
-                            groups.append(names)
-            graph = build_graph(groups)
-            result = {'method': 'legacy combined author records, no publication deduplication', 'nodes': len(graph), 'edges': sum(map(len,graph.values()))//2, 'pagerank': pagerank_sparse(graph)}
+            graph = load_network(wos, scopus, args.deduplicate)
+            result = {'method': 'known DOI deduplication' if args.deduplicate else 'legacy combined author records, no publication deduplication', 'nodes': len(graph), 'edges': sum(map(len,graph.values()))//2, 'pagerank': pagerank_sparse(graph)}
         elif args.command == 'validate':
             from .validation import compare_annual
             result = compare_annual(wos, scopus, args.end_year)
